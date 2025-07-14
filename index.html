@@ -1,36 +1,99 @@
-<html><head>
-  <style>
-    
+<!--
+さすがにこれだけだと怒られると思ったのでまともな話します。
+このサイトはgithub pagesといって、無料でサイトを運営できるよ。
+phpという言語を使った少し高度な操作はできないけど、素晴らしいよ。
+でも学校のchromebookだとたぶんブロックされるね。悲しいね。
+
+そんでこのページはHTML(とjavascriptとcss)の言語で書かれてて
+
+HTMLってのはwebのページに文字とか図形とか画像とかを置く役割で
+<html>みたいなタグで表現するよ
+たいていのタグは開始タグと終了タグで挟んで記述するんだよ。
+タグは種類がめっちゃ多いので調べてね。
+↓このサイトは他にもプログラミング言語の用法をめっちゃ詳しく書いてあるからすごいよ
+https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements
+
+jsvascriptはそれらのHTMLに動きをつけるよ
+これからjsって略すよ
+プログラミングという意味では一番大事な部分だね
+<script>タグの中身に記述されるよ
+HTMLの外にjsファイルを置いて<script src="そのアドレス"></script>
+と書かれる場合も多いよ
+
+cssは飾りだよ
+HTMLの色や大きさなんかの見た目を変えるよ
+<style>タグのなかに記述されるよ
+
+せっかくなので実際のコードに触れながらそれらを勉強しようぜ
+
+まずこの文章を囲っているのはコメントアウトといって、プログラムとしては意味がないけど、中にメモできるんだ
+htmlだと
+これが終了タグで→!-->　<!--←これが開始タグ
+!-->
+<!DOCTYPE html> <!--これはhtmlの種類を宣言しているのだけど、別になくても動くからいいよ!-->
+<html>　<!--これはhtmlタグといって、この中にhtmlを記述するんだ!-->
+  <head>　<!--これはheadタグといって、jsやcss,タイトルなんかの直接表示しない情報を書いたりするよ
+    　　　　　　でもjsとかはここじゃなくてもいいよ。!-->
+    <meta charset="UTF-8" />　<!--これは使う文字コードを宣言しているよ。なくてもいいよ。あとこれは終了ダグが不要だよ。!-->
+  <style>　
+    /*ここにcssを記述するよ。今は使ってないけど
+    .fail{
+    font-size: 4em;
+    color:red;
+    }
+    みたいにクラス名に紐づけて見た目を変えるんだよ。
+    ちなみにcssではコメントアウトは
+    終了タグ→*/ /*←開始タグ　を使うよ。
+    */
   </style>
-</head><body>
-  <h1 id="oppai" style="font-size: 4em;">TINKO!!</h1>
-  <button id="botan">SEITENKAN!</button>
-  <h1 class="fail" id="fail"><nobr>！！性転換失敗！！</nobr></h1>
-  <script>
-    const width=window.innerWidth;
+</head><body>　<!--ここはheadよりもメインの表示する情報を示すよ。!-->
+  <h1 id="oppai" style="font-size: 4em;">TINKO!!</h1>　
+  <!--これは見出しタグで、大きさによってh1~h6(h1が一番大きい)があるよ。
+  　　 こういうタグにはidやclassという、タグを指定できるように名前をつけることができるよ。idはjsで、classはcssで使うよ。
+  　　 styleというのはcssをタグに直接記述できるよ。
+  !-->
+  <button id="botan">SEITENKAN!</button> <!--これはボタンタグで、ボタンを表示できるよ。そのままだと反応しないけどあとで説明するね。!-->
+  <h1 class="fail" id="fail"><nobr>！！性転換失敗！！</nobr></h1>　<!--<nobr>は改行しないという意味だよ。逆に<br>で改行できるよ。!-->
+  <script> //ここにはjsを書くよ。コメントアウトは/**/か、//を書くと改行するまでコメントアウトできるよ。
+    const width=window.innerWidth; 
+    /*widthという変数(名前は適当)に画面の幅を宣言したよ。
+    　代入にはconst,let,varなんかがあるけど、最初のうちはなにも考えずバカみたいにvar使ってていいよ。
+      constは再宣言も再代入もできなくて、letは再宣言ができなくて、varはどっちもできるよ。
+      constやletで宣言した変数は、そのブロック({}←波括弧とかで区切られる範囲)から出ると消え去るよ。
+      varならいつ宣言してもいつでも使えるよ。これはメリットでありデメリット。
+    */
     document.getElementById("fail").style="font-size: 5em; color:red;position:fixed;left:"+width+"px;";
-let now=0;
+    //document.getElementById("fail") で、idがfailの要素を表しているよ。
+    //その中のstyle、つまりcssを編集しているよ。フォントサイズを5倍、赤色、左から画面の外に出る位置調整をしているよ。
+let now=0; //now(今の性別)という変数に0を宣言したよ。
 document.getElementById("botan").addEventListener('click',function(){
-  const ran=Math.random();
-   if(ran>0.05){ 
-     if(now==0){
-       document.getElementById("oppai").innerHTML="MANKO!!";
-     now=1;
-     }else{
+  //addEventListener('click',function(){})でボタンのクリックを検知してfunctionを実行するよ。でもfunctionはまだ解説していなかったね。
+  /*const a =function(b){ここに関数を記述};
+  　a(c);
+  　という感じで、aにbを引数として持つ関数を定義して、aの引数にcを入れて実行できるよ。よくわかんないと思うよ。
+  　このサイトではそういう書き方してないからまた今度解説するよ。
+  　まあここではクリックされたらfunctionの中身を実行するくらいの認識でいいよ。
+   */
+  const ran=Math.random();　//0から1の範囲のランダムな数を出力するよ。それをranに宣言したよ。
+   if(ran>0.05){ 　//if(条件式){中身}で条件式を満たすときだけ中身を実行できるよ。
+     if(now==0){　//nowが0であることをnow==0と書くよ。データ型も完全一致にしたいときは===を使うよ。逆に0でないというにはnow!==0とかくよ。
+       document.getElementById("oppai").innerHTML="MANKO!!";　//innerHTMLはタグの中身の文字を変えるよ。
+     now=1; //nowに1を代入したよ。
+     }else{　//条件式を満たさないときの処理をelseでかけるよ。
        document.getElementById("oppai").innerHTML="TINKO!!";
      now=0;
      }
   }else{
     let b=500;
-    document.getElementById("fail").style.display="inline";
-    const a=setInterval(function(){
-      b--;
-      document.getElementById("fail").style="font-size: 5em; color:red;position:fixed;left:"+b+"px;";
+    document.getElementById("fail").style.display="inline"; //displayは表示非表示を切り替えるcssだよ。ここでは表示したよ。
+    const a=setInterval(function(){　//setInterval(function(){中身},時間)で、中身を時間(ミリ秒)ごとに繰り返すよ。
+      b--;　//デクリメントといって、bを1減らすよ。逆にb++;はインクリメントといって、1増やせるよ。
+      document.getElementById("fail").style="font-size: 5em; color:red;position:fixed;left:"+b+"px;";　//位置が左からbピクセルのところに変えるよ。つまり画面にスライドしてくるよ。
       if((b+1000)<0){
         document.getElementById("oppai").innerHTML="HUTANARI!?!?";
         document.getElementById("oppai").style=" background: linear-gradient(to right,#e60000,#f39800,#fff100,#009944,#0068b7,#1d2088,#920783);-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-size: 5em;";
-        now=3;
-      }else if((b+1000)%2==0){
+        now=3; //失敗が画面から出たあたりで虹色のふたなりを表示させるよ。虹色はむずいので覚えなくていいよ。
+      }else if((b+1000)%2==0){ 　//bを2で割った余りによって処理を分けているよ。つまり交互だね。
         document.getElementById("oppai").style="font-size: 4em;"
         document.getElementById("oppai").innerHTML="TINKO!!";
       }else if((b+1000)%2==1){
@@ -43,3 +106,8 @@ document.getElementById("botan").addEventListener('click',function(){
   })
   </script>
 </body></html>
+<!--
+これだけだよ。こんなゴミクズみたいなページでも意外と学びはあると思うよ。もし質問あったらいってね。でもchatgptくんのほうがわかりやすいよ。
+chatgptくんにコード書いてもらって、そのコードを読んで質問する、みたいなことしても学びはあると思うよ。
+いちおう他の作品もあるから要望あったら解説するよ。じゃあね。
+!-->
