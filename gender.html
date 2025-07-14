@@ -1,0 +1,45 @@
+<html><head>
+  <style>
+    
+  </style>
+</head><body>
+  <h1 id="oppai" style="font-size: 4em;">TINKO!!</h1>
+  <button id="botan">SEITENKAN!</button>
+  <h1 class="fail" id="fail"><nobr>！！性転換失敗！！</nobr></h1>
+  <script>
+    const width=window.innerWidth;
+    document.getElementById("fail").style="font-size: 5em; color:red;position:fixed;left:"+width+"px;";
+let now=0;
+document.getElementById("botan").addEventListener('click',function(){
+  const ran=Math.random();
+   if(ran>0.05){ 
+     if(now==0){
+       document.getElementById("oppai").innerHTML="MANKO!!";
+     now=1;
+     }else{
+       document.getElementById("oppai").innerHTML="TINKO!!";
+     now=0;
+     }
+  }else{
+    let b=500;
+    document.getElementById("fail").style.display="inline";
+    const a=setInterval(function(){
+      b--;
+      document.getElementById("fail").style="font-size: 5em; color:red;position:fixed;left:"+b+"px;";
+      if((b+1000)<0){
+        document.getElementById("oppai").innerHTML="HUTANARI!?!?";
+        document.getElementById("oppai").style=" background: linear-gradient(to right,#e60000,#f39800,#fff100,#009944,#0068b7,#1d2088,#920783);-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-size: 5em;";
+        now=3;
+      }else if((b+1000)%2==0){
+        document.getElementById("oppai").style="font-size: 4em;"
+        document.getElementById("oppai").innerHTML="TINKO!!";
+      }else if((b+1000)%2==1){
+        document.getElementById("oppai").style="font-size: 4em;"
+        document.getElementById("oppai").innerHTML="MANKO!!";
+      }
+    },2);
+    
+  }
+  })
+  </script>
+</body></html>
